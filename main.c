@@ -6,7 +6,7 @@
 /*   By: slucas <slucas@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 18:49:58 by slucas            #+#    #+#             */
-/*   Updated: 2022/04/05 07:07:28 by slucas           ###   ########.fr       */
+/*   Updated: 2022/04/05 14:18:33 by slucas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,9 @@ int	main(void)
 		//printf("line1 [%02d]: %s", i, line1);
 		free(line);
 		//free(line1);
-		line = get_next_line(fd1);
-		printf("line1 [%02d]: %s", i, line);
-		free(line);
+		//line = get_next_line(fd1);
+		//printf("line1 [%02d]: %s", i, line);
+		//free(line);
 		i++;
 	}
 

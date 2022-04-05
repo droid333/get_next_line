@@ -6,7 +6,7 @@
 /*   By: slucas <slucas@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 17:58:22 by slucas            #+#    #+#             */
-/*   Updated: 2022/04/05 06:14:40 by slucas           ###   ########.fr       */
+/*   Updated: 2022/04/05 14:29:41 by slucas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,26 @@ static char	*ft_get_rest(char *tmp_str)
 	return (rest);
 }
 
+/*
+** rd = read
+** char **tmp_str because static char* in get_next_line
+** and just char* here --- lot of problems ( ಠ ʖ̯ ಠ) ---
+*/
+static void	ft_rd_process(int rd_ret, char *buffer, char **tmp_str)
+{
+	char	*temp;
+
+	buffer[rd_ret] = '\0';
+	temp = *tmp_str;
+	if (!temp)
+	{
+		temp = malloc(sizeof(*temp) * 1);
+		temp[0] = '\0';
+	}
+	*tmp_str = ft_strjoin(temp, buffer);
+	free(temp);
+}
+
 static char	*ft_get_tmp_str(int fd, char *tmp_str)
 {
 	char	*buffer;
@@ -83,10 +103,7 @@ static char	*ft_get_tmp_str(int fd, char *tmp_str)
 	{
 		rd_ret = read(fd, buffer, BUFFER_SIZE);
 		if (rd_ret > 0)
-		{
-			buffer[rd_ret] = '\0';
-			tmp_str = ft_strjoin(tmp_str, buffer);
-		}
+			ft_rd_process(rd_ret, buffer, &tmp_str);
 		else
 			break ;
 	}
