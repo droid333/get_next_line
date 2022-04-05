@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: slucas <slucas@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 17:58:22 by slucas            #+#    #+#             */
-/*   Updated: 2022/04/05 06:14:40 by slucas           ###   ########.fr       */
+/*   Updated: 2022/04/05 07:01:09 by slucas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 /*
 ** line25 is for the EOF (if)
@@ -98,15 +98,15 @@ static char	*ft_get_tmp_str(int fd, char *tmp_str)
 
 char	*get_next_line(int fd)
 {
-	static char	*tmp_str;
+	static char	*tmp_str[MAX_FD];
 	char		*line;
 
-	if (fd < 0 || BUFFER_SIZE <= 0)
+	if (fd < 0 || BUFFER_SIZE <= 0 || fd > MAX_FD)
 		return (NULL);
-	tmp_str = ft_get_tmp_str(fd, tmp_str);
-	if (!tmp_str)
+	tmp_str[fd] = ft_get_tmp_str(fd, tmp_str[fd]);
+	if (!tmp_str[fd])
 		return (NULL);
-	line = ft_get_line(tmp_str);
-	tmp_str = ft_get_rest(tmp_str);
+	line = ft_get_line(tmp_str[fd]);
+	tmp_str[fd] = ft_get_rest(tmp_str[fd]);
 	return (line);
 }

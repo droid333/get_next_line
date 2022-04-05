@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: slucas <slucas@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 17:55:18 by slucas            #+#    #+#             */
-/*   Updated: 2022/04/05 06:49:11 by slucas           ###   ########.fr       */
+/*   Updated: 2022/04/05 06:47:38 by slucas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#ifndef GET_NEXT_LINE_BONUS_H
+# define GET_NEXT_LINE_BONUS_H
 
 # include <sys/types.h>
 # include <sys/stat.h>
@@ -21,6 +21,7 @@
 
 //# define BUFFER_SIZE 4096
 //# define BUFFER_SIZE 10
+# define MAX_FD 255
 
 size_t		ft_strlen(const char *s);
 char		*ft_strchr(const char *s, int c);
